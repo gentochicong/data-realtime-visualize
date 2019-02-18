@@ -15,7 +15,7 @@ export class AppComponent {
     this.arrayData = [];
     let apiURL = `https://6a05b1f2.ngrok.io/apis/get-all-root`;
     this.http.get(apiURL).toPromise().then(
-      res => {
+        (res: CustomResponse) => {
          this.arrayData = res.data;
       },
       error => {
@@ -38,7 +38,7 @@ export class AppComponent {
       this.arrayData[indClick].clicked = true;
       let apiURL = `https://6a05b1f2.ngrok.io/apis/get-child/${nodeId}`;
       this.http.get(apiURL).toPromise().then(
-        res => {
+          (res: CustomResponse) => {
           console.log('res.data: ', res.data);
           const arrFirst = this.arrayData.slice(0, indClick + 1);
           const arrEnd = this.arrayData.slice(indClick + 1);
@@ -60,4 +60,7 @@ export class AppComponent {
       );
     }
   }
+}
+export interface CustomResponse {
+    data: any;
 }

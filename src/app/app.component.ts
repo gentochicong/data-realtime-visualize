@@ -13,7 +13,7 @@ export class AppComponent {
   arrayData = [];
   constructor(private http: HttpClient) {
     this.arrayData = [];
-    let apiURL = `http://localhost:9696/apis/get-all-root`;
+    let apiURL = `https://6a05b1f2.ngrok.io/apis/get-all-root`;
     this.http.get(apiURL).toPromise().then(
       res => {
          this.arrayData = res.data;
@@ -36,7 +36,7 @@ export class AppComponent {
     console.log('ind: ', indClick);
     if(itemClick.nodeType === 'node' && itemClick.clicked === false){
       this.arrayData[indClick].clicked = true;
-      let apiURL = `http://localhost:9696/apis/get-child/${nodeId}`;
+      let apiURL = `https://6a05b1f2.ngrok.io/apis/get-child/${nodeId}`;
       this.http.get(apiURL).toPromise().then(
         res => {
           console.log('res.data: ', res.data);
